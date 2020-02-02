@@ -19,14 +19,14 @@ app.use(passportJWT.initialize());
 
 // register routes
 app.use('/api/post', post);
-app.use('/api/card', card);
+app.use('/api/cards', card);
 app.use('/api/auth', auth);
 
 app.use(errorHandler);
 
 mongoose.connect('mongodb://localhost:27017/memoriae', { useNewUrlParser: true, useUnifiedTopology: true }).then(connected => {
-    console.log('> Connected to database');
-    app.listen(8080, () => {
-        console.log(`> listening on port ${8080}`);
-    })
+  console.log('> Connected to database');
+  app.listen(8080, () => {
+    console.log(`> listening on port ${8080}`);
+  })
 });

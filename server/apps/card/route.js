@@ -5,7 +5,7 @@ const { authenticate } = require('../../middlewares/authHandler')();
 
 const router = express.Router();
 
-router.get('/', getCards);
+router.get('/', authenticate(), getCards);
 router.post('/', authenticate(), addCardValidations, addCard);
 
 module.exports = router;
