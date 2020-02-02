@@ -7,9 +7,8 @@ const errorHandler = require('./middlewares/errorHandler');
 const passportJWT = require('./middlewares/authHandler')();
 
 // import apps
-const post = require('./apps/post/route');
-const card = require('./apps/card/route');
-const auth = require('./apps/auth/route');
+const card = require('./apps/card');
+const auth = require('./apps/auth');
 
 const app = express();
 
@@ -18,7 +17,6 @@ app.use(bodyParser.json());
 app.use(passportJWT.initialize());
 
 // register routes
-app.use('/api/post', post);
 app.use('/api/cards', card);
 app.use('/api/auth', auth);
 
