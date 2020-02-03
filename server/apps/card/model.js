@@ -2,20 +2,24 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const Card = new Schema({
+const card = new Schema({
   question: { type: String, required: true },
   answer: { type: String, required: true },
   user: { type: Schema.Types.ObjectId, ref: 'user' },
   createdAt: { type: Date, default: new Date() },
   categories: [{ type: String, name: String }],
-  correctAnswers: { type: Number, default: 0 },
-  wrongAnswers: { type: Number, default: 0 },
-  latestAnswer: { type: Date }
+  learningScore: { type: Number, default: 0 },
+  answers: {
+    correct: { type: Number, default: 0 },
+    wrong: { type: Number, default: 0 },
+    dateLatestAnswer: { type: Date },
+    dateLastestShow: { type: Date }
+  }
 });
 
-Card.methods.getCardScore = function () {
+card.methods.getCardScore = function () {
   // Return score based on correct answers, wrong answers and latest answer
   return 0;
 }
 
-module.exports = mongoose.model('card', Card);
+module.exports = mongoose.model('card', card);
